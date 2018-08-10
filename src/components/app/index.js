@@ -21,7 +21,7 @@ class App extends Component {
           <h1 className="bta-app-main-heading">Track an Item</h1>
         </section>
         <section className="bta-app-categories-container">
-          <Categories categories={[{id: 1, name: 'TRANSPORT'}]} />
+          <Categories categories={this.state.categories} />
         </section>
       </div>
     );

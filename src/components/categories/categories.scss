@@ -1,3 +1,20 @@
 .bta-categories-container {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bta-categories-select-container {
+  width: 260px;
+  height: 80px;
+  border: 1px solid $border-color-primary;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:active {
+    background-color: $bg-color-secondary;
+    color: $text-color-secondary;
+  }
 }
