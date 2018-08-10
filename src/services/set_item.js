@@ -1,6 +1,6 @@
 const setItem = (item) => {
   return new Promise((resolve, reject) => {
-    fetch('http://localhost:3000/item', {
+    fetch('http://budget-tracker-api:3000/item', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',

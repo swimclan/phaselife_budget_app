@@ -62,3 +62,6 @@ typings/
 
 # build directory
 build/
+
+# ssl cert directory
+ssl/
