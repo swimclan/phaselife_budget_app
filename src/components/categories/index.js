@@ -6,20 +6,26 @@ export default class Categories extends Component {
     super(props);
     this.onClickCategory = this.onClickCategory.bind(this); 
     this.state = {
-      selected: 0
+      index: 0
     }
+  }
+
+  componentDidMount() {
+    this.props.onChange(this.props.categories[this.state.index]);
   }
 
   onClickCategory(e) {
     e.stopPropagation();
-    this.setState({ selected: (this.state.selected + 1) % this.props.categories.length });
+    let index = (this.state.index + 1) % this.props.categories.length
+    this.setState({ index });
+    this.props.onChange(this.props.categories[index]);
   }
 
   render() {
     return (
       <div className="bta-categories-container">
         <section onClick={this.onClickCategory} className="bta-categories-select-container">
-          <article className="bta-categories-option">{this.props.categories.length ? this.props.categories[this.state.selected].name : 'loading'}</article>
+          <article className="bta-categories-option">{this.props.categories[this.state.index].name}</article>
         </section>
       </div>
     );
@@ -27,5 +33,6 @@ export default class Categories extends Component {
 }
 
 Categories.propTypes = {
-  categories: PropTypes.array
+  categories: PropTypes.array,
+  onChange: PropTypes.func
 }

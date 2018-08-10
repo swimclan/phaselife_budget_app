@@ -1,4 +1,4 @@
-export const getCategories = () => {
+const getCategories = () => {
   return new Promise((resolve, reject) => {
     fetch('http://localhost:3000/categories').then((response) => {
       return response.json();
@@ -14,3 +14,5 @@ export const getCategories = () => {
     });
   });
 }
+
+export default getCategories;
