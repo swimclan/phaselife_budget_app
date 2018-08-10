@@ -1,6 +1,6 @@
 const getCategories = () => {
   return new Promise((resolve, reject) => {
-    fetch('http://budget-tracker-api:3000/categories').then((response) => {
+    fetch('https://api.phaselife.com/categories').then((response) => {
       return response.json();
     }).catch((error) => {
       return {error: error}

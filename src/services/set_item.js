@@ -1,6 +1,6 @@
 const setItem = (item) => {
   return new Promise((resolve, reject) => {
-    fetch('http://budget-tracker-api:3000/item', {
+    fetch('https://api.phaselife.com/item', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',
