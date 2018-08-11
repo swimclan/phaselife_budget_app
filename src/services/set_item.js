@@ -1,6 +1,9 @@
+var config = require('../services/config');
+
 const setItem = (item) => {
   return new Promise((resolve, reject) => {
-    fetch('https://api.phaselife.com/item', {
+    const url = config.get(`services.setItem.url.${process.env.NODE_ENV}`);
+    fetch(url, {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',

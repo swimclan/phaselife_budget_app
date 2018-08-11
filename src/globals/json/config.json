@@ -1,0 +1,16 @@
+{
+  "services": {
+    "getCategories": {
+      "url": {
+        "production": "https://api.phaselife.com/categories",
+        "development": "http://api.phaselife.com:3000/categories"
+      }
+    },
+    "setItem": {
+      "url": {
+        "production": "https://api.phaselife.com/item",
+        "development": "http://api.phaselife.com:3000/item"
+      }
+    }
+  }
+}
