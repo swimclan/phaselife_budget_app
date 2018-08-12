@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import getCategories from '../../services/get_categories';
 import setItem from '../../services/set_item';
+import deleteItem from '../../services/delete_item';
 import Categories from '../categories';
+import Hamburger from '../hamburger';
+import History from '../history';
 import Numeral from '../numeral';
 import Loader from '../loader';
+import getItems from '../../services/get_items';
 
 class App extends Component {
   constructor(props) {
@@ -11,19 +15,28 @@ class App extends Component {
     this.onCategoryChange = this.onCategoryChange.bind(this);
     this.onPriceChange = this.onPriceChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onDeleteItem = this.onDeleteItem.bind(this);
+    this.hamburgerToggle = this.hamburgerToggle.bind(this);
     this.state = {
       categories: [],
+      items: [],
       category: null,
       price: 0,
       submitted: false,
+      hamburger: false,
       classes: {
         headingSecondary: 'bta-app-secondary-heading'
       }
     }
   }
   async componentDidMount() {
-    const categories = await getCategories();
-    this.setState({ categories });
+    try {
+      const categories = await getCategories();
+      const items = await getItems();
+      this.setState({ categories, items });
+    } catch (e) {
+      // do nothing
+    }
   }
 
   onCategoryChange(category) {
@@ -34,9 +47,23 @@ class App extends Component {
     this.setState({ price: this.state.price + increment, submitted: false});
   }
 
+  async onDeleteItem(item) {
+    try {
+      await deleteItem(item);
+      this.setState({ items: await getItems() });
+    } catch (e) {
+      // Do nothing
+    }
+  }
+
   async onSubmit(e) {
     e.stopPropagation();
-    await setItem({ categoryId: this.state.category.id, price: this.state.price });
+    try {
+      await setItem({ categoryId: this.state.category.id, price: this.state.price });
+      this.setState({ items: await getItems() })
+    } catch (e) {
+      // do nothing
+    }
     this.flashSubmittedMsg();
     this.setState({ submitted: true, price: 0 });
   }
@@ -46,6 +73,10 @@ class App extends Component {
     setTimeout(() => {
       this.setState({ classes: { headingSecondary: this.state.classes.headingSecondary.split(' ')[0] } });        
     }, 3000)
+  }
+
+  hamburgerToggle(selected) {
+    this.setState({ hamburger: selected });
   }
 
   render() {
@@ -58,6 +89,14 @@ class App extends Component {
     }
     return (
       <div className="bta-app-container">
+        <section className="bta-app-history-container">
+          <History open={this.state.hamburger} items={this.state.items} onDelete={this.onDeleteItem} />
+        </section>
+        <section className="bta-app-menu-container">
+          <div className="bta-app-menu-hamburger">
+            <Hamburger onToggle={this.hamburgerToggle} />
+          </div>
+        </section>
         <section className="bta-app-heading-container">
           <h1 className="bta-app-main-heading">Track an Item</h1>
           <h3 className={this.state.classes.headingSecondary}>Item submitted</h3>

@@ -7,8 +7,21 @@
   align-items: center;
 }
 
+.bta-app-menu-hamburger {
+  position: absolute;
+  z-index: 999;
+  right: 22px;
+  top: 26px;
+}
+
 .bta-app-main-heading {
   text-align: center;
+  font-size: 1.7em;
+  margin: 1em 0 0.67em 0;
+  @media screen and (min-width: 321px) {
+    margin: 0.67em 0;
+    font-size: 2em;
+  }
 }
 
 .bta-app-secondary-heading {
@@ -24,7 +37,13 @@
   }
 }
 
-.bta-app-heading-container,
+.bta-app-heading-container {
+  margin-bottom: 10px;
+  @media screen and (min-width: 321px) {
+    margin-bottom: 35px;
+  }
+}
+
 .bta-app-categories-container,
 .bta-app-price-container,
 .bta-app-submit-container {

@@ -11,6 +11,18 @@
         "production": "https://api.phaselife.com/item",
         "development": "http://api.phaselife.com:3000/item"
       }
+    },
+    "getItems": {
+      "url": {
+        "production": "https://api.phaselife.com/items",
+        "development": "http://api.phaselife.com:3000/items"
+      }
+    },
+    "deleteItem": {
+      "url": {
+        "production": "https://api.phaselife.com/item",
+        "development": "http://api.phaselife.com:3000/item"
+      }
     }
   }
 }

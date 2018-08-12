@@ -1,0 +1,35 @@
+.bta-hamburger-container {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
+  &.selected {
+    .bta-hamburger-dot {
+      border-radius: 10px;
+    }
+    transform: rotate(0.125turn);
+    .bta-hamburger-dot:nth-child(1) {
+      height: 30px;
+      width: 4px;
+    }
+    .bta-hamburger-dot:nth-child(2) {
+      display: none;
+    }
+    .bta-hamburger-dot:nth-child(3) {
+      transform: translate(0px, -15px);
+      width: 26px;
+      height: 4px;
+    }
+  }
+}
+
+.bta-hamburger-dot {
+  width: 6px;
+  height: 6px;
+  background-color: $bg-color-secondary;
+  border-radius: 100%;
+  transition: height 0.3s, width 0.3s, transform 0.3s ease;
+}

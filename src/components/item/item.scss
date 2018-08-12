@@ -1,0 +1,37 @@
+.bta-item-container {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  color: $text-color-primary;
+  border-top: 1px solid $border-color-secondary;
+  section {
+    width: 25%;
+    flex: 3;
+    text-align: left;
+    padding-left: 15px;
+    &.bta-item-date {
+      flex: 4;
+    }
+    &.bta-item-category {
+      flex: 4;
+    }
+    &.bta-item-price {
+      flex: 2;
+    }
+    &.bta-item-delete {
+      flex: 0;
+      color: red;
+      overflow: hidden;
+      padding: 0;
+      text-align: center;
+      transition: flex 0.1s ease;
+    }
+  }
+  &.selected {
+    section.bta-item-delete {
+      flex: 4;
+    }
+  }
+}
