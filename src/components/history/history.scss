@@ -2,6 +2,7 @@
   position: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   height: 0;
   z-index: 99;
   top: 0;

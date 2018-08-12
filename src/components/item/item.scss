@@ -4,8 +4,10 @@
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  opacity: 1;
   color: $text-color-primary;
   border-top: 1px solid $border-color-secondary;
+  transition: opacity 0.3s, height 0.3s;
   section {
     width: 25%;
     flex: 3;
@@ -33,5 +35,9 @@
     section.bta-item-delete {
       flex: 4;
     }
+  }
+  &.deleted {
+    opacity: 0;
+    height: 0;
   }
 }

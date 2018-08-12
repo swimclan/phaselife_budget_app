@@ -8,7 +8,8 @@ export default class Item extends Component {
     this.onClickDelete = this.onClickDelete.bind(this);
     this.itemRef = React.createRef();
     this.state = {
-      selected: false
+      selected: false,
+      deleted: false
     }
   }
 
@@ -17,6 +18,9 @@ export default class Item extends Component {
     hammer.on('swipe', (e) => {
       e.direction <= 2 && this.setState({ selected: true });
       e.direction >= 4 && this.setState({ selected: false });
+    });
+    this.itemRef.current.addEventListener('transitionend', (e) => {
+      e.target.dataset && e.target.dataset.type === 'container' && this.props.onDelete(this.props.item);
     });
   }
 
@@ -27,14 +31,15 @@ export default class Item extends Component {
 
   onClickDelete(e) {
     e.stopPropagation();
-    this.props.onDelete(this.props.item);
+    this.setState({ deleted: true });
   }
 
   render() {
     let containerClass = 'bta-item-container';
     this.state.selected && (containerClass += ' selected');
+    this.state.deleted && (containerClass += ' deleted');
     return (
-      <li className={containerClass} ref={this.itemRef}>
+      <li className={containerClass} ref={this.itemRef} data-type="container">
         <section className="bta-item-date">{this.makeDate(this.props.item.createdAt)}</section>
         <section className="bta-item-category">{this.props.item.category.name}</section>
         <section className="bta-item-price">{`$${this.props.item.price}`}</section>
