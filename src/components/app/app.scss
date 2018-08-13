@@ -38,17 +38,25 @@
 }
 
 .bta-app-heading-container {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   @media screen and (min-width: 321px) {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
   }
 }
 
-.bta-app-categories-container,
+.bta-app-categories-container {
+  width: $width-element-primary;
+  margin-bottom: 0px;
+}
+
 .bta-app-price-container,
+.bta-app-progress-container {
+  width: $width-element-primary;
+  margin-bottom: 25px;
+}
+
 .bta-app-submit-container {
   width: $width-element-primary;
-  margin-bottom: 35px;
 }
 
 .bta-app-price-container {
@@ -78,6 +86,12 @@
   justify-content: center;
   align-items: center;
   margin-top: auto;
+}
+
+.bta-app-progress-container {
+  height: 50px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .bta-app-submit-button {

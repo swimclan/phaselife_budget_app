@@ -6,6 +6,7 @@ import Categories from '../categories';
 import Hamburger from '../hamburger';
 import History from '../history';
 import Numeral from '../numeral';
+import Progress from '../progress';
 import Loader from '../loader';
 import getItems from '../../services/get_items';
 
@@ -75,6 +76,15 @@ class App extends Component {
     }, 3000)
   }
 
+  categoryTotal(category) {
+    return this.state.items
+      .filter(item => item.category.id === category.id)
+      .filter(item => new Date(item.createdAt).getMonth() === new Date().getMonth())
+      .reduce((acc, val) => {
+        return acc += val.price;
+      }, 0);
+  }
+
   hamburgerToggle(selected) {
     this.setState({ hamburger: selected });
   }
@@ -103,6 +113,9 @@ class App extends Component {
         </section>
         <section className="bta-app-categories-container">
           {this.state.categories.length ? <Categories categories={this.state.categories} onChange={this.onCategoryChange} /> : <Loader />}
+        </section>
+        <section className="bta-app-progress-container">
+          <Progress limit={this.state.category ? this.state.category.limit : 0} current={this.state.category ? this.categoryTotal(this.state.category) : 0} />
         </section>
         <section className="bta-app-price-container">
           <div className="bta-currency-label">$</div>

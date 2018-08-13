@@ -2,6 +2,14 @@
 $bg-color-primary: rgb(17, 13, 45);
 $bg-color-secondary: rgb(237, 237, 237);
 $bg-color-tertiary: rgb(0, 0, 0);
+$bg-color-good: #80cc8c;
+$bg-color-warning: #e4c05b;
+$bg-color-danger: rgb(193, 20, 20);
+
+// GLOBAL GRADIENTS
+$gradient-good: linear-gradient(to right, darken($bg-color-good, 20%), $bg-color-good 100%);
+$gradient-warning: linear-gradient(to right, darken($bg-color-warning, 20%), $bg-color-warning 100%);
+$gradient-danger: linear-gradient(to right, $bg-color-danger, lighten($bg-color-danger, 25%) 100%);
 
 $text-color-primary: rgb(237, 237, 237);
 $text-color-secondary: rgb(17, 13, 45);
