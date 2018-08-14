@@ -9,14 +9,30 @@
 
 .bta-progress-bar {
   height: 100%;
-  display: inline-block;
+  display: flex;
+  overflow: hidden;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 0.8em;
+  width: 0;
+  transition: width 500ms ease;
   &.good {
     background: $gradient-good;
+    color: $text-color-primary;
   }
   &.warning {
     background: $gradient-warning;
+    color: $text-color-secondary;
   }
   &.danger {
     background: $gradient-danger;
+    color: $text-color-primary;
+  }
+}
+
+.bta-progress-spent {
+  display: none;
+  &.displayed {
+    display: block;
   }
 }
