@@ -17,9 +17,11 @@ export default class History extends Component {
         <div className="bta-history-header-block">
           <h3 className="bta-history-heading">This Month</h3>
         </div>
-        <ul className="bta-history-item-list">
-          {this.items()}
-        </ul>
+        <div className="bta-history-list-block">
+          <ul className="bta-history-item-list">
+            {this.items()}
+          </ul>
+        </div>
       </div>
     );
   }
