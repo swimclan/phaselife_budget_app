@@ -8,6 +8,7 @@ import History from '../history';
 import Numeral from '../numeral';
 import Progress from '../progress';
 import Loader from '../loader';
+import Confirm from '../confirm';
 import getItems from '../../services/get_items';
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
     this.onCategoryChange = this.onCategoryChange.bind(this);
     this.onPriceChange = this.onPriceChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onCloseConfirm = this.onCloseConfirm.bind(this);
     this.onDeleteItem = this.onDeleteItem.bind(this);
     this.hamburgerToggle = this.hamburgerToggle.bind(this);
     this.state = {
@@ -65,7 +67,6 @@ class App extends Component {
     } catch (e) {
       // do nothing
     }
-    this.flashSubmittedMsg();
     this.setState({ submitted: true, price: 0 });
   }
 
@@ -74,6 +75,10 @@ class App extends Component {
     setTimeout(() => {
       this.setState({ classes: { headingSecondary: this.state.classes.headingSecondary.split(' ')[0] } });        
     }, 3000)
+  }
+
+  onCloseConfirm() {
+    this.setState({ submitted: false });
   }
 
   categoryTotal(category) {
@@ -89,6 +94,18 @@ class App extends Component {
     this.setState({ hamburger: selected });
   }
 
+  allItemsTotal() {
+    return this.state.items.reduce((acc, val) => {
+      return acc += val.price;
+    }, 0)
+  }
+
+  allCategoriesLimitTotal() {
+    return this.state.categories.reduce((acc, val) => {
+      return acc += val.limit;
+    }, 0);
+  }
+
   render() {
     if (!this.state.categories.length) {
       return (
@@ -101,6 +118,9 @@ class App extends Component {
       <div className="bta-app-container">
         <section className="bta-app-history-container">
           <History open={this.state.hamburger} items={this.state.items} onDelete={this.onDeleteItem} />
+        </section>
+        <section className="bta-app-confirm-container">
+          <Confirm onClose={this.onCloseConfirm} current={this.allItemsTotal()} total={this.allCategoriesLimitTotal()} show={this.state.submitted}/>
         </section>
         <section className="bta-app-menu-container">
           <div className="bta-app-menu-hamburger">

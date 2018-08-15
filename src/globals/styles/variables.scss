@@ -2,9 +2,10 @@
 $bg-color-primary: rgb(17, 13, 45);
 $bg-color-secondary: rgb(237, 237, 237);
 $bg-color-tertiary: rgb(0, 0, 0);
+$bg-color-dark-opaque: rgba(0, 0, 0, 0.7);
 $bg-color-good: #27d141;
 $bg-color-warning: #e4c05b;
-$bg-color-danger: rgb(160, 17, 17);
+$bg-color-danger: rgb(193, 20, 20);
 
 // GLOBAL GRADIENTS
 $gradient-good: linear-gradient(to right, darken($bg-color-good, 20%), $bg-color-good 100%);
@@ -15,9 +16,13 @@ $text-color-primary: rgb(237, 237, 237);
 $text-color-secondary: rgb(17, 13, 45);
 $text-color-alert: lighten($text-color-secondary, 50%);
 $text-color-delete: rgb(193, 20, 20);
+$text-color-danger: $text-color-delete;
+$text-color-good: $bg-color-good;
 
 $border-color-primary: rgba(237, 237, 237, 0.55);
 $border-color-secondary: rgba(237, 237, 237, 0.22);
+$border-color-tertiary: rgb(118, 115, 138);
+$border-color-dark: $text-color-secondary;
 
 // GLOBAL FONTS
 $font-family-primary-heavy: 'Rubik-Bold', sans-serif;
