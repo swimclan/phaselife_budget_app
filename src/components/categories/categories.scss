@@ -10,9 +10,34 @@
   height: 80px;
   border: 1px solid $border-color-primary;
   font-size: 2em;
+  flex: 9;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:active {
+    background-color: $bg-color-secondary;
+    color: $text-color-secondary;
+  }
+}
+
+.bta-categories-paddle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $border-color-primary;
+  outline: none;
+  background: none;
+  color: $text-color-primary;
+  height: 82px;
+  flex: 1;
+  font-family: FontAwesome;
+  font-size: 2em;
+  &.paddle-left:before {
+    content: '\f0d9';
+  }
+  &.paddle-right:before {
+    content: '\f0da';
+  }
   &:active {
     background-color: $bg-color-secondary;
     color: $text-color-secondary;
