@@ -6,11 +6,10 @@
 }
 
 .bta-categories-select-container {
-  width: 100%;
+  width: 50%;
   height: 80px;
   border: 1px solid $border-color-primary;
-  font-size: 2em;
-  flex: 9;
+  font-size: 1.4em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,8 +27,8 @@
   outline: none;
   background: none;
   color: $text-color-primary;
-  height: 82px;
-  flex: 1;
+  width: 25%;
+  height: 80px;
   font-family: FontAwesome;
   font-size: 2em;
   &.paddle-left:before {

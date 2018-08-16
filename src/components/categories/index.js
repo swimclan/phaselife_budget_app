@@ -17,14 +17,13 @@ export default class Categories extends Component {
 
   onClickCategory(e) {
     e.stopPropagation();
-    let index = this.calcNextIndex(1);
-    this.setState({ index });
-    this.props.onChange(this.props.categories[index]);
+    this.move(1);
   }
 
   move(steps) {
     let index = this.calcNextIndex(steps);
     this.setState({ index });
+    this.props.onChange(this.props.categories[index]);
   }
 
   calcNextIndex(step) {
@@ -35,11 +34,11 @@ export default class Categories extends Component {
   render() {
     return (
       <div className="bta-categories-container">
-        <button className="bta-categories-paddle paddle-left" onClick={() => this.move(-1)}></button>
+        <article className="bta-categories-paddle paddle-left" onClick={() => this.move(-1)}></article>
         <section onClick={this.onClickCategory} className="bta-categories-select-container">
           <article className="bta-categories-option">{this.props.categories[this.state.index].name}</article>
         </section>
-      <button className="bta-categories-paddle paddle-right" onClick={() => this.move(1)}></button>
+      <article className="bta-categories-paddle paddle-right" onClick={() => this.move(1)}></article>
       </div>
     );
   }
