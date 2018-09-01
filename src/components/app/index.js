@@ -96,7 +96,8 @@ class App extends Component {
 
   allItemsTotal() {
     return this.state.items.reduce((acc, val) => {
-      return acc += val.price;
+      const isCurrentMonthItem = new Date(val.createdAt).getMonth() === new Date().getMonth();
+      return isCurrentMonthItem ? acc += val.price : acc += 0;
     }, 0)
   }
 
